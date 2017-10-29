@@ -1,0 +1,40 @@
+version: '2'
+services:
+  yaksh-django:
+    image: rohmhatre/yaksh.django
+    container_name: yaksh_django
+    volumes:
+      - ./online_test:/Sites/online_test
+    depends_on:
+      - yaksh-db
+      - yaksh-codeserver
+    links:
+      - yaksh-db
+      - yaksh-codeserver
+    ports:
+      - 8000:80
+    environment:
+      DB_NAME: yaksh
+      DB_USER: root
+      DB_PASS: root
+      DB_HOST: yaksh-db
+      DB_PORT: 3306
+      CODE_SERVER_HOST: yaksh-codeserver
+    restart: always
+
+
+  yaksh-codeserver:
+    image: rohmhatre/yaksh.codeserver
+    container_name: yaksh_codeserver
+    volumes:
+      - ./online_test:/Sites/online_test
+    restart: always 
+
+
+  yaksh-db:
+    image: mariadb:10.2
+    container_name: yaksh_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: yaksh
+    restart: always 
