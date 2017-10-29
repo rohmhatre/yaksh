@@ -1,8 +1,8 @@
 #### Pre-Requisites
 
-	1. Fresh installed ubuntu 16.04.
-	2. root user permissions to run commands.
-
+	1. Install Docker https://docs.docker.com/engine/installation/
+	2. Install Docker Compose https://docs.docker.com/compose/install/#install-compose
+	3. install git
 
 #### Help for deploying Yaksh interface.
 
